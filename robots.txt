@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://pruthvijadhav.tech/sitemap.xml
+Sitemap: https://pruthvijadhav-tech.github.io/Pruthvi-Jadhav/sitemap.xml
