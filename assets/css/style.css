@@ -847,9 +847,9 @@ p {
 
 .profile-img {
   width: 100%;
-  aspect-ratio: 4/5;
+  aspect-ratio: 640 / 695;
   object-fit: cover;
-  object-position: 50% 20%;
+  object-position: center top;
   border-radius: var(--radius-lg);
   display: block;
 }
@@ -1209,6 +1209,60 @@ p {
   border-color: var(--border-glow);
   transform: translateX(4px);
   background: rgba(139, 92, 246, 0.1);
+}
+
+.tile-icon {
+  width: 42px;
+  height: 42px;
+  border-radius: var(--radius-sm);
+  background: rgba(139, 92, 246, 0.12);
+  border: 1px solid rgba(139, 92, 246, 0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--accent);
+  flex-shrink: 0;
+  transition: all var(--transition-fast);
+}
+
+.quick-connect-tile:hover .tile-icon {
+  background: rgba(139, 92, 246, 0.25);
+  border-color: var(--accent);
+  color: #fff;
+  transform: scale(1.05);
+}
+
+.pillar-icon-box {
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-sm);
+  background: rgba(139, 92, 246, 0.12);
+  border: 1px solid rgba(139, 92, 246, 0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--accent);
+  margin-bottom: 12px;
+}
+
+.spec-icon {
+  display: inline-block;
+  vertical-align: -3px;
+  margin-right: 6px;
+  color: var(--accent);
+  flex-shrink: 0;
+}
+
+.project-header-svg {
+  display: inline-block;
+  color: var(--accent);
+  filter: drop-shadow(0 0 14px rgba(139, 92, 246, 0.45));
+  transition: transform var(--transition-fast), color var(--transition-fast);
+}
+
+.project-card:hover .project-header-svg {
+  transform: scale(1.12);
+  color: var(--accent-hover);
 }
 
 @media (max-width: 900px) {

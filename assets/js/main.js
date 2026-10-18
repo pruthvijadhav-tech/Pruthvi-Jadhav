@@ -64,7 +64,7 @@
 
     const toast = document.createElement('div');
     toast.className = 'toast';
-    toast.innerHTML = `<span>⚡</span> <span>${message}</span>`;
+    toast.innerHTML = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-2px; margin-right:6px; flex-shrink:0;"><polyline points="20 6 9 17 4 12"></polyline></svg><span>${message}</span>`;
     container.appendChild(toast);
 
     setTimeout(() => {

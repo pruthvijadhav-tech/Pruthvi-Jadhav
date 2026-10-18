@@ -9,7 +9,7 @@
 
 ---
 
-## 🌟 Overview
+## Overview
 
 A modern, multi-page personal portfolio engineered with industry-standard web practices, rich glassmorphic aesthetics, fluid 3D Canvas particle interactions, and complete **SEO & GEO / Local Search Engine Optimization**.
 
@@ -17,7 +17,7 @@ Designed and built by **Pruthvi Jadhav**, a 3rd-year B.Tech Computer Science stu
 
 ---
 
-## 📁 Multi-Page Structure
+## Multi-Page Structure
 
 * **[`index.html`](index.html) / [`home.html`](home.html)**: Interactive homepage featuring real-time 3D orbital sphere animation, impact metrics counter, featured projects showcase, and quick CTAs.
 * **[`about.html`](about.html)**: Academic background at PCU Pune, technical engineering philosophy, 3D portrait card, and an interactive milestone timeline with certificate preview links.
@@ -27,7 +27,7 @@ Designed and built by **Pruthvi Jadhav**, a 3rd-year B.Tech Computer Science stu
 
 ---
 
-## 🚀 Featured Projects
+## Featured Projects
 
 1. **Poverty Aid Identifier (Live Civic-Tech Web App)**
    * Multilingual eligibility discovery (English, Hindi, Marathi) for 16+ central and Maharashtra state welfare schemes.
@@ -53,7 +53,7 @@ Designed and built by **Pruthvi Jadhav**, a 3rd-year B.Tech Computer Science stu
 
 ---
 
-## 🔍 SEO & GEO Optimization Features
+## SEO & GEO Optimization Features
 
 * **Geographic / Local SEO**:
   * Region: `IN-MH` (Maharashtra, India)
@@ -65,7 +65,7 @@ Designed and built by **Pruthvi Jadhav**, a 3rd-year B.Tech Computer Science stu
 
 ---
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 * **Structure:** Semantic HTML5 with ARIA accessibility.
 * **Styling:** Vanilla CSS with custom design tokens, responsive Flexbox/Grid, and glassmorphism.
@@ -74,7 +74,7 @@ Designed and built by **Pruthvi Jadhav**, a 3rd-year B.Tech Computer Science stu
 
 ---
 
-## 💻 Running Locally
+## Running Locally
 
 Simply open `index.html` in any modern web browser or serve via any static HTTP server:
 
@@ -90,7 +90,7 @@ Open `http://localhost:8080` in your browser.
 
 ---
 
-## 📬 Contact & Connect
+## Contact & Connect
 
 * **Email:** [jadhavpruthvi20069@gmail.com](mailto:jadhavpruthvi20069@gmail.com)
 * **LinkedIn:** [linkedin.com/in/pruthvi-jadhav](https://www.linkedin.com/in/pruthvi-jadhav-045a3937b/)
