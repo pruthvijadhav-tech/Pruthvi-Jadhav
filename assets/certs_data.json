@@ -1,0 +1,82 @@
+[
+  {
+    "title": "Mastercard Cybersecurity Job Simulation",
+    "org": "Forage",
+    "date": "May 13, 2026",
+    "type": "Certificate of Completion",
+    "notes": "Practical tasks: designed a phishing email simulation and interpreted simulation results.",
+    "verify": "",
+    "ach": false,
+    "images": [
+      "assets/images/certs/cert_0.jpg"
+    ]
+  },
+  {
+    "title": "Artificial Intelligence Fundamentals",
+    "org": "IBM SkillsBuild",
+    "date": "Jan 4, 2026",
+    "type": "Digital badge",
+    "notes": "",
+    "verify": "https://www.credly.com/badges/ad78a3b5-380c-4c26-8603-e42b84c2cbae",
+    "ach": false,
+    "images": [
+      "assets/images/certs/cert_1.jpg"
+    ]
+  },
+  {
+    "title": "Machine Learning and Deep Learning",
+    "org": "IBM SkillsBuild (Adobe Learning Manager record)",
+    "date": "Jan 4, 2026",
+    "type": "Completion Certificate",
+    "notes": "",
+    "verify": "",
+    "ach": false,
+    "images": [
+      "assets/images/certs/cert_2.jpg"
+    ]
+  },
+  {
+    "title": "Acquiring Data (Level 1 \u2013 AI Fundamentals of AI ASCEND)",
+    "org": "Accenture \u00b7 FutureSkills Prime",
+    "date": "Dec 25, 2025",
+    "type": "Certificate of Participation",
+    "notes": "",
+    "verify": "",
+    "ach": false,
+    "images": [
+      "assets/images/certs/cert_3.jpg"
+    ]
+  },
+  {
+    "title": "Data Processing and Visualisation (Level 2 \u2013 AI Ready of AI ASCEND)",
+    "org": "Accenture \u00b7 FutureSkills Prime",
+    "date": "Dec 25, 2025",
+    "type": "Certificate of Participation",
+    "notes": "",
+    "verify": "",
+    "ach": false,
+    "images": [
+      "assets/images/certs/cert_4.jpg"
+    ]
+  },
+  {
+    "title": "Unstop Engineering Daily Quiz \u2014 September Series",
+    "org": "Unstop",
+    "date": "Sep 26\u201329, 2025",
+    "type": "Certificates of Excellence (4)",
+    "notes": "Ranks on the certificates: 31st (26 Sep), 20th (27 Sep), 40th (28 Sep), 79th (29 Sep).",
+    "verify": "",
+    "ach": true,
+    "images": [
+      "assets/images/certs/cert_5.jpg",
+      "assets/images/certs/cert_6.jpg",
+      "assets/images/certs/cert_7.jpg",
+      "assets/images/certs/cert_8.jpg",
+      "assets/images/certs/cert_9.jpg",
+      "assets/images/certs/cert_10.jpg",
+      "assets/images/certs/cert_11.jpg",
+      "assets/images/certs/cert_12.jpg",
+      "assets/images/certs/cert_13.jpg"
+    ]
+  }
+]
