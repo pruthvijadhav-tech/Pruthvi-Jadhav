@@ -53,6 +53,9 @@
   /* Layout */
   --container-max: 1240px;
   --nav-height: 72px;
+  --safe-left: env(safe-area-inset-left, 0px);
+  --safe-right: env(safe-area-inset-right, 0px);
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
 }
 
 /* Base Reset & Box Sizing */
@@ -66,6 +69,7 @@ html {
   scroll-behavior: smooth;
   scroll-padding-top: calc(var(--nav-height) + 24px);
   height: 100%;
+  overflow-x: hidden;
 }
 
 body {
@@ -75,10 +79,16 @@ body {
   font-size: 16px;
   line-height: 1.65;
   min-height: 100%;
+  width: 100%;
   overflow-x: hidden;
   position: relative;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  touch-action: manipulation;
+}
+
+body.menu-open {
+  overflow: hidden;
 }
 
 /* Mouse Follower Radial Glow */
@@ -312,6 +322,27 @@ p {
   background: rgba(139, 92, 246, 0.2);
 }
 
+/* Nav Backdrop Overlay */
+.nav-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(7, 7, 16, 0.75);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  z-index: 95;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--transition-normal);
+}
+.nav-backdrop.open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.mobile-drawer-cta {
+  display: none;
+}
+
 /* Mobile Drawer */
 @media (max-width: 960px) {
   .site-nav {
@@ -323,22 +354,25 @@ p {
   }
   .nav-menu {
     position: fixed;
-    top: calc(var(--nav-height) + 18px);
+    top: calc(var(--nav-height) + 14px);
     left: 4vw;
     right: 4vw;
+    max-height: calc(100vh - var(--nav-height) - 30px);
+    overflow-y: auto;
     background: rgba(11, 11, 26, 0.96);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
-    border: 1px solid var(--border-subtle);
+    border: 1px solid var(--border-glow);
     border-radius: var(--radius-xl);
     flex-direction: column;
     padding: 20px 16px;
     gap: 8px;
-    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.85);
     opacity: 0;
     pointer-events: none;
     transform: translateY(-16px);
     transition: all var(--transition-normal);
+    z-index: 101;
   }
   .nav-menu.open {
     opacity: 1;
@@ -350,6 +384,26 @@ p {
     padding: 12px 18px;
     font-size: 1.05rem;
     justify-content: flex-start;
+  }
+}
+
+@media (max-width: 640px) {
+  .site-nav {
+    width: calc(100% - 24px);
+    left: 12px;
+    transform: none;
+    padding: 6px 12px 6px 16px;
+    height: 60px;
+  }
+  .site-nav .nav-cta {
+    display: none;
+  }
+  .mobile-drawer-cta {
+    display: block;
+    width: 100%;
+    margin-top: 8px;
+    padding-top: 14px;
+    border-top: 1px solid var(--border-subtle);
   }
 }
 
@@ -471,6 +525,14 @@ p {
   margin: 0 auto;
   position: relative;
   z-index: 1;
+  padding-left: var(--safe-left);
+  padding-right: var(--safe-right);
+}
+
+@media (max-width: 480px) {
+  .container {
+    width: calc(100% - 28px);
+  }
 }
 
 .page-main {
@@ -559,12 +621,14 @@ p {
   display: flex;
   align-items: center;
   justify-content: center;
+  touch-action: pan-y;
 }
 
 .orbit-canvas {
   width: 100%;
   height: 100%;
   display: block;
+  touch-action: pan-y;
 }
 
 .orbit-fallback {
@@ -615,10 +679,24 @@ p {
     grid-template-columns: 1fr;
     text-align: left;
     padding-top: 20px;
+    gap: 32px;
   }
   .orbit-stage-wrapper {
-    max-width: 380px;
-    margin: 20px auto 0;
+    max-width: 340px;
+    margin: 10px auto 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .orbit-stage-wrapper {
+    max-width: 290px;
+  }
+  .orbit-nodes-bar {
+    gap: 6px;
+  }
+  .orbit-node-btn {
+    font-size: 0.72rem;
+    padding: 5px 10px;
   }
 }
 
@@ -670,11 +748,24 @@ p {
 @media (max-width: 900px) {
   .stats-grid {
     grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
   }
 }
 @media (max-width: 480px) {
   .stats-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    margin: 20px 0 40px;
+  }
+  .stat-card {
+    padding: 16px 10px;
+  }
+  .stat-number {
+    font-size: 1.65rem;
+  }
+  .stat-label {
+    font-size: 0.72rem;
+    letter-spacing: 0.05em;
   }
 }
 
@@ -712,7 +803,7 @@ p {
 
 .projects-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 320px), 1fr));
   gap: 28px;
 }
 
@@ -818,6 +909,27 @@ p {
 @media (max-width: 600px) {
   .projects-grid {
     grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  .project-card-header {
+    height: 150px;
+    padding: 14px;
+  }
+  .project-card-body {
+    padding: 18px 16px;
+    gap: 12px;
+  }
+  .project-title {
+    font-size: 1.15rem;
+  }
+  .project-actions {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .project-actions .btn {
+    flex: 1 1 calc(50% - 6px);
+    justify-content: center;
+    padding: 8px 12px;
   }
 }
 
@@ -940,12 +1052,64 @@ p {
   }
 }
 
+@media (max-width: 600px) {
+  .profile-frame {
+    padding: 8px;
+  }
+  .profile-info-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+    margin-top: 14px;
+  }
+  .info-tile {
+    padding: 10px 12px;
+  }
+  .info-tile span {
+    font-size: 0.88rem;
+  }
+  .timeline {
+    padding-left: 22px;
+    margin: 24px 0;
+  }
+  .timeline-item::before {
+    left: -22px;
+    width: 12px;
+    height: 12px;
+    top: 5px;
+  }
+}
+
+/* ==========================================================================
+   ENGINEERING ETHOS BANNER (HOME CALLOUT)
+   ========================================================================== */
+.ethos-banner {
+  border: 1px solid var(--border-glow);
+  border-radius: var(--radius-xl);
+  padding: 48px 36px;
+  background: linear-gradient(135deg, rgba(139, 92, 246, 0.12) 0%, rgba(11, 11, 26, 0.8) 100%);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 40px;
+  align-items: center;
+}
+
+@media (max-width: 900px) {
+  .ethos-banner {
+    grid-template-columns: 1fr;
+    gap: 28px;
+    padding: 28px 20px;
+    border-radius: var(--radius-lg);
+  }
+}
+
 /* ==========================================================================
    SKILLS & CERTIFICATIONS
    ========================================================================== */
 .skills-category-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
   gap: 24px;
 }
 
@@ -992,6 +1156,19 @@ p {
   border-color: var(--secondary);
   transform: translateX(4px);
   background: rgba(139, 92, 246, 0.09);
+}
+
+@media (max-width: 600px) {
+  .skills-category-card {
+    padding: 20px 16px;
+  }
+  .skill-row {
+    padding: 8px 10px;
+    gap: 8px;
+  }
+  .skill-name {
+    font-size: 0.88rem;
+  }
 }
 
 .skill-name {
@@ -1133,7 +1310,7 @@ p {
   background: rgba(11, 11, 26, 0.8);
   color: var(--text-primary);
   font-family: inherit;
-  font-size: 0.95rem;
+  font-size: 16px;
   transition: all var(--transition-normal);
 }
 .form-input:focus, .form-textarea:focus {
@@ -1268,6 +1445,20 @@ p {
 @media (max-width: 900px) {
   .contact-grid {
     grid-template-columns: 1fr;
+    gap: 32px;
+  }
+}
+@media (max-width: 600px) {
+  .contact-form-card, .geo-card {
+    padding: 22px 16px;
+    border-radius: var(--radius-lg);
+  }
+  .quick-connect-tile {
+    padding: 12px 14px;
+    gap: 12px;
+  }
+  .quick-connect-tile a, .quick-connect-tile span {
+    word-break: break-all;
   }
 }
 
@@ -1373,6 +1564,30 @@ p {
   box-shadow: var(--shadow-md);
 }
 
+@media (max-width: 640px) {
+  .modal-overlay {
+    padding: 12px;
+    align-items: flex-end;
+  }
+  .modal-content {
+    padding: 22px 16px;
+    border-radius: var(--radius-lg);
+    max-height: 90vh;
+  }
+  .modal-close-btn {
+    width: 38px;
+    height: 38px;
+  }
+  .cert-full-img {
+    max-height: 52vh;
+  }
+  .cert-viewer-controls {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+}
+
 /* ==========================================================================
    FOOTER
    ========================================================================== */
@@ -1450,6 +1665,12 @@ p {
 @media (max-width: 540px) {
   .footer-grid {
     grid-template-columns: 1fr;
+    gap: 28px;
+  }
+  .footer-bottom {
+    flex-direction: column;
+    gap: 14px;
+    text-align: center;
   }
 }
 

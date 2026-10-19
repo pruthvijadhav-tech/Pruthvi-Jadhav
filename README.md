@@ -23,7 +23,7 @@ Designed and built by **Pruthvi Jadhav**, a 3rd-year B.Tech Computer Science stu
 * **[`about.html`](about.html)**: Academic background at PCU Pune, technical engineering philosophy, 3D portrait card, and an interactive milestone timeline with certificate preview links.
 * **[`projects.html`](projects.html)**: Filterable project showcase with category tabs (*Civic Tech, AI & GenAI, IoT*), real-time search filtering, and interactive deep-dive modal case studies.
 * **[`skills.html`](skills.html)**: Categorized skills matrix with proficiency badges, plus an interactive certifications carousel and modal image viewer for all 11 credentials.
-* **[`contact.html`](contact.html)**: Validated direct contact form, one-click email clipboard copy with toast notifications, and a dedicated **GEO Location Card** (Pune, India coordinates `18.6279° N, 73.8009° E` + live IST clock).
+* **[`contact.html`](contact.html)**: Validated direct contact form, one-click email clipboard copy with toast notifications, and a dedicated **GEO Location Card** (Pune, India + live IST clock).
 
 ---
 
@@ -95,4 +95,4 @@ Open `http://localhost:8080` in your browser.
 * **Email:** [jadhavpruthvi20069@gmail.com](mailto:jadhavpruthvi20069@gmail.com)
 * **LinkedIn:** [linkedin.com/in/pruthvi-jadhav](https://www.linkedin.com/in/pruthvi-jadhav-045a3937b/)
 * **GitHub:** [github.com/pruthvijadhav-tech](https://github.com/pruthvijadhav-tech)
-* **Location:** Pune, Maharashtra, India (18.6279° N, 73.8009° E)
+* **Location:** Pune, Maharashtra, India

@@ -33,22 +33,66 @@
     yrEl.textContent = new Date().getFullYear();
   }
 
-  // 4. Mobile Navigation Drawer
+  // 4. Mobile Navigation Drawer & Backdrop
   const menuBtn = $('#mobile-menu-btn');
   const navMenu = $('#nav-menu');
+  const navBackdrop = $('#nav-backdrop');
+
+  function closeMobileMenu() {
+    if (!navMenu || !navMenu.classList.contains('open')) return;
+    navMenu.classList.remove('open');
+    if (navBackdrop) navBackdrop.classList.remove('open');
+    if (menuBtn) {
+      menuBtn.setAttribute('aria-expanded', 'false');
+      menuBtn.innerHTML = '☰';
+    }
+    document.body.classList.remove('menu-open');
+  }
+
+  function openMobileMenu() {
+    if (!navMenu) return;
+    navMenu.classList.add('open');
+    if (navBackdrop) navBackdrop.classList.add('open');
+    if (menuBtn) {
+      menuBtn.setAttribute('aria-expanded', 'true');
+      menuBtn.innerHTML = '✕';
+    }
+    document.body.classList.add('menu-open');
+  }
+
   if (menuBtn && navMenu) {
-    menuBtn.addEventListener('click', () => {
-      const isOpen = navMenu.classList.toggle('open');
-      menuBtn.setAttribute('aria-expanded', isOpen);
-      menuBtn.innerHTML = isOpen ? '✕' : '☰';
+    menuBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const isOpen = navMenu.classList.contains('open');
+      if (isOpen) {
+        closeMobileMenu();
+      } else {
+        openMobileMenu();
+      }
+    });
+
+    if (navBackdrop) {
+      navBackdrop.addEventListener('click', closeMobileMenu);
+    }
+
+    // Auto-close when clicking any link inside navMenu
+    navMenu.addEventListener('click', (e) => {
+      if (e.target.closest('a')) {
+        closeMobileMenu();
+      }
+    });
+
+    // Close on Escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && navMenu.classList.contains('open')) {
+        closeMobileMenu();
+      }
     });
 
     // Close when clicking outside
     document.addEventListener('click', (e) => {
       if (!e.target.closest('.site-nav') && navMenu.classList.contains('open')) {
-        navMenu.classList.remove('open');
-        menuBtn.setAttribute('aria-expanded', 'false');
-        menuBtn.innerHTML = '☰';
+        closeMobileMenu();
       }
     });
   }
